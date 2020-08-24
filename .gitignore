@@ -1,5 +1,9 @@
+# node
 node_modules
-**/node_modules
+package-lock.json
+yarn.lock
+
+# test
 test/**/Dockerfile
 test/**/.dockerignore
 test/**/README_DOCKER.md

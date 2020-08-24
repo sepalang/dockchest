@@ -1,12 +1,19 @@
 # Dockchest (alpha.2)
+Docker prototyping tool
+
 
 ## Usage
-Write dockchest.yml in the project in progress. Like this
+
+
+Write dockchest.yml or DockerDesign.yml in the project in progress. Like this
 ```yml
 defines:
-  NAME: &NAME live-server
-  VERSION: &VERSION 0.1.2
-  SERVER_PORT: &SERVER_PORT 8080
+  NAME: &NAME doch-localvolume
+  VERSION: &VERSION 0.2.0
+  C_SERVER_PORT: &C_SERVER_PORT 8000
+  H_SERVER_PORT: &H_SERVER_PORT 8000
+arg:
+  SERVER_PORT: *C_SERVER_PORT
 build:
   tag: [*NAME, *VERSION]
   ignore: |
@@ -15,26 +22,59 @@ build:
   script: |
     FROM node:12
     ARG SERVER_PORT
+    ENV SERVER_PORT $SERVER_PORT
     WORKDIR /usr/src/app
     COPY ./* ./
-    EXPOSE ${SERVER_PORT}
     RUN npm install
-    CMD [ "node", "index.js" ,"--port=${SERVER_PORT}" ]
+    CMD npx live-server --port=$SERVER_PORT --host=0.0.0.0
 run:
   name: "express-server"
   publishes: 
-    - [*SERVER_PORT, *SERVER_PORT]
-#  volumes: 
-#    - [../volume, /usr/src/app/volume]
-
+    - [*H_SERVER_PORT, *C_SERVER_PORT]
+  volumes: 
+    - [../volume, /usr/src/app/volume]
 ```
 
+
+Create a Dockerfile through the `make` command.
+```bash
+$ npx doch make test/localvolume
+
+
+
+- [Directory]
+
+  cd ~/git/dockchest/test/localvolume/live-server
+
+- [Build]
+
+  docker build --tag doch-localvolume:0.2.0 --file Dockerfile --build-arg SERVER_PORT=8000 .
+
+- [Run with attach]
+
+  docker run -i -t --name express-server --publish="8000:8000" --volume="/Users/labeldock/git/dockchest/test/localvolume/volume:/usr/src/app/volume" doch-localvolume:0.2.0
+```
+
+
+Enter the commands sequentially through the manual after the make command.
+```
+cd ~/git/dockchest/test/localvolume/live-server
+docker build --tag doch-localvolume:0.2.0 --file Dockerfile --build-arg SERVER_PORT=8000 .
+docker run -i -t --name express-server --publish="8000:8000" --volume="~/git/dockchest/test/localvolume/volume:/usr/src/app/volume" doch-localvolume:0.2.0
+```
+
+
+This guide is not final... being studied to make it simpler and clearer.
+
+
+## Design goal
 It automatically creates a'Dockerfile', builds the image, and run the disposable container.
 ```
-doch make
+doch make test/localvolume
 doch build
-doch run
+doch run # support graceful exit
 ```
+
 
 ## RFCs
 ```

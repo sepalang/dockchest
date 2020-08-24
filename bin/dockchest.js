@@ -10,7 +10,7 @@ doit(async function(){
   switch(action){
     case "pre":
       const configList = await lib.configAll({ action, rootPath, args })
-      console.log(nodeLog(configList.map(pre=>pre.config)))
+      console.log(nodeLog(configList))
       break
     case "make":
       lib.makeAll({ action, rootPath, args })

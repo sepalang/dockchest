@@ -1,8 +1,8 @@
 defines:
-  NAME: &NAME dchest-localvolume
-  VERSION: &VERSION 0.1.3
-  C_SERVER_PORT: &C_SERVER_PORT 8080
-  H_SERVER_PORT: &H_SERVER_PORT 8080
+  NAME: &NAME doch-localvolume
+  VERSION: &VERSION 0.2.0
+  C_SERVER_PORT: &C_SERVER_PORT 8000
+  H_SERVER_PORT: &H_SERVER_PORT 8000
 arg:
   SERVER_PORT: *C_SERVER_PORT
 build:
@@ -13,10 +13,11 @@ build:
   script: |
     FROM node:12
     ARG SERVER_PORT
+    ENV SERVER_PORT $SERVER_PORT
     WORKDIR /usr/src/app
     COPY ./* ./
     RUN npm install
-    CMD npx live-server --port=${SERVER_PORT} --bind=0.0.0.0
+    CMD npx live-server --port=$SERVER_PORT --host=0.0.0.0
 run:
   name: "express-server"
   publishes: 

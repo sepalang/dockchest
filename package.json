@@ -1,11 +1,11 @@
 {
   "name": "@sepalang/dockchest",
-  "version": "0.0.0-alpha.2",
+  "version": "0.0.0-alpha.3",
   "description": "",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
-    "doch": "bin/runner.js"
+    "doch": "bin/dockchest.js"
   },
   "scripts": {
     "t1:pre": "node bin/dockchest pre test/express",
@@ -17,7 +17,7 @@
     "t2:manual": "node bin/dockchest manual test/localvolume",
     "t2:run": "node bin/dockchest run test/localvolume",
     "test": "npm run r2:show",
-    "pack": ""
+    "pack": "npm pack"
   },
   "author": "AHN HO JUNG",
   "license": "MIT",

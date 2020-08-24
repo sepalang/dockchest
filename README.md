@@ -1,4 +1,4 @@
-# Dockchest (alpha.2)
+# Dockchest (alpha.3)
 Docker prototyping tool
 
 

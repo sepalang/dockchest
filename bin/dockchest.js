@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { argv } = require('yargs')
 const { doit, pathJoin, readFilePromise, nodeLog } = require('../lib/utils')
 const lib = require('../lib/index')

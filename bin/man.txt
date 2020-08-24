@@ -1,6 +1,8 @@
 
-[dockgo help]
+[Dockchest : 'doch' help]
 
-prebuild : Preview settings before build
-build : Build the Dockerfile and other files
-run : Run the built docker file
+pre : Preview settings before build
+make : Build the Dockerfile, README, .ignore
+manual : Guide to manual commands.
+build : (todo) Create a docker image.
+run : (todo) Run the built docker file

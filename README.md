@@ -1,4 +1,4 @@
-# Dockchest (alpha.3)
+# Dockchest (alpha.4)
 Docker prototyping tool
 
 
@@ -66,6 +66,12 @@ docker run -i -t --name express-server --publish="8000:8000" --volume="~/git/doc
 
 This guide is not final... being studied to make it simpler and clearer.
 
+
+## shortcut
+make, build, run with deamon
+```
+doch -mbd
+```
 
 ## Design goal
 It automatically creates a'Dockerfile', builds the image, and run the disposable container.

@@ -6,4 +6,7 @@ yarn.lock
 # test
 test/**/Dockerfile
 test/**/.dockerignore
+test/**/DockerHelp.md
+
+## legacy
 test/**/README_DOCKER.md

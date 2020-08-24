@@ -1,0 +1,28 @@
+{
+  "name": "@sepalang/dockchest",
+  "version": "0.0.0-alpha.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "doch": "bin/runner.js"
+  },
+  "scripts": {
+    "t1:pre": "node bin/dockchest pre test/express",
+    "t1:make": "node bin/dockchest make test/express",
+    "t1:manual": "node bin/dockchest manual test/express",
+    "t1:run": "node bin/dockchest run test/express",
+    "t2:pre": "node bin/dockchest pre test/localvolume",
+    "t2:make": "node bin/dockchest make test/localvolume",
+    "t2:manual": "node bin/dockchest manual test/localvolume",
+    "t2:run": "node bin/dockchest run test/localvolume",
+    "test": "npm run r2:show"
+  },
+  "author": "AHN HO JUNG",
+  "license": "MIT",
+  "dependencies": {
+    "@sepalang/runner": "^0.11.1",
+    "glob": "^7.1.6",
+    "yaml": "^1.10.0",
+    "yargs": "^15.4.1"
+  }
+}

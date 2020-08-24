@@ -1,0 +1,26 @@
+defines:
+  NAME: &NAME dchest-express-server
+  VERSION: &VERSION 0.1.2
+  C_SERVER_PORT: &C_SERVER_PORT 8080
+  H_SERVER_PORT: &H_SERVER_PORT 8080
+arg:
+  SERVER_PORT: *C_SERVER_PORT
+build:
+  tag: [*NAME, *VERSION]
+  ignore: |
+    node_modules
+    npm-debug.log
+  script: |
+    FROM node:12
+    ARG SERVER_PORT
+    WORKDIR /usr/src/app
+    COPY ./* ./
+    EXPOSE ${DEFAULT_SERVER_PORT}
+    RUN npm install
+    CMD [ "node", "index.js" ]
+run:
+  name: "express-server"
+  publishes: 
+    - [*H_SERVER_PORT, *C_SERVER_PORT]
+#  volumes: 
+#    - [../volume, /usr/src/app/volume]

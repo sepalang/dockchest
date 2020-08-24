@@ -1,0 +1,6 @@
+
+[dockgo help]
+
+prebuild : Preview settings before build
+build : Build the Dockerfile and other files
+run : Run the built docker file

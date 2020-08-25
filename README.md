@@ -1,4 +1,4 @@
-# Dockchest (alpha.4)
+# Dockchest (alpha.5)
 Docker prototyping tool
 
 
@@ -8,10 +8,10 @@ Docker prototyping tool
 Write dockchest.yml or DockerDesign.yml in the project in progress. Like this
 ```yml
 defines:
-  NAME: &NAME doch-localvolume
-  VERSION: &VERSION 0.2.0
-  C_SERVER_PORT: &C_SERVER_PORT 8000
-  H_SERVER_PORT: &H_SERVER_PORT 8000
+  - &NAME doch-localvolume
+  - &VERSION 0.2.0
+  - &C_SERVER_PORT 8000
+  - &H_SERVER_PORT 8000
 arg:
   SERVER_PORT: *C_SERVER_PORT
 build:
@@ -28,7 +28,7 @@ build:
     RUN npm install
     CMD npx live-server --port=$SERVER_PORT --host=0.0.0.0
 run:
-  name: "express-server"
+  name: "live-server"
   publishes: 
     - [*H_SERVER_PORT, *C_SERVER_PORT]
   volumes: 
@@ -38,13 +38,12 @@ run:
 
 Create a Dockerfile through the `make` command.
 ```bash
-$ npx doch make test/localvolume
-
+$ doch make test/localvolume
 
 
 - [Directory]
 
-  cd ~/git/dockchest/test/localvolume/live-server
+  cd C:\Users\label\git\dockchest\test\localvolume\live-server
 
 - [Build]
 
@@ -52,7 +51,11 @@ $ npx doch make test/localvolume
 
 - [Run with attach]
 
-  docker run -i -t --name express-server --publish="8000:8000" --volume="/Users/labeldock/git/dockchest/test/localvolume/volume:/usr/src/app/volume" doch-localvolume:0.2.0
+  docker run -i -t --name="express-server" --publish="8000:8000" --volume="C:\Users\label\git\dockchest\test\localvolume\volume:/usr/src/app/volume" doch-localvolume:0.2.0
+
+- [Run with deamon]
+
+  docker run -i -t -d --name="express-server" --publish="8000:8000" --volume="C:\Users\label\git\dockchest\test\localvolume\volume:/usr/src/app/volume" doch-localvolume:0.2.0
 ```
 
 

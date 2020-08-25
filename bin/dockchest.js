@@ -34,6 +34,7 @@ doit(async function(){
       //lib.run({ action, rootPath, args })
       break
     case "manual":
+    case "man":
       const [ select ] = await lib.findDockchestFile(rootPath)
       if(!select){
         return

@@ -9,6 +9,8 @@ const [action="manual", target="", ...args] = argv._
 const cwd = process.cwd()
 const rootPath = pathJoin(cwd, target)
 
+
+
 doit(async function(){
   switch(action){
     case "preview":
@@ -19,7 +21,7 @@ doit(async function(){
       break
     case "make":
     case "m":
-      lib.makeAll({ rootPath })
+      await caseMake({ rootPath, simpleGuide:true })
       break
     case "build":
     case "b":
@@ -44,7 +46,7 @@ doit(async function(){
       if(argv.make || argv.m){
         console.log(`Manual run : doch make`)
         runed.push('make')
-        await lib.makeAll({ rootPath, simpleGuide:false })
+        await caseMake({ rootPath, simpleGuide:false })
       }
 
       if(argv.build || argv.b){
@@ -101,3 +103,7 @@ doit(async function(){
       break
   }
 })
+
+async function caseMake ({ rootPath, simpleGuide = true }){
+  return await lib.makeAll({ rootPath, simpleGuide })
+}

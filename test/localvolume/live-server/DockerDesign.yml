@@ -1,8 +1,8 @@
 defines:
-  NAME: &NAME doch-localvolume
-  VERSION: &VERSION 0.2.0
-  C_SERVER_PORT: &C_SERVER_PORT 8000
-  H_SERVER_PORT: &H_SERVER_PORT 8000
+  - &NAME doch-localvolume
+  - &VERSION 0.2.0
+  - &C_SERVER_PORT 8000
+  - &H_SERVER_PORT 8000
 arg:
   SERVER_PORT: *C_SERVER_PORT
 build:

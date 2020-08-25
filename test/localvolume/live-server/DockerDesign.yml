@@ -19,7 +19,7 @@ build:
     RUN npm install
     CMD npx live-server --port=$SERVER_PORT --host=0.0.0.0
 run:
-  name: "express-server"
+  name: "live-server"
   publishes: 
     - [*H_SERVER_PORT, *C_SERVER_PORT]
   volumes: 

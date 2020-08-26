@@ -38,7 +38,8 @@ run:
 
 Create a Dockerfile through the `make` command.
 ```bash
-$ doch make test/localvolume
+$ cd test/localvolume
+$ doch make  # Dockerfile is automatically generated.
 
 
 - [Directory]

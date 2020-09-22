@@ -25,13 +25,11 @@ doit(async function(){
       break
     case "build":
     case "b":
-      console.log("TODO :: build")
-      //lib.run({ action, rootPath, args })
+      lib.build({ rootPath, args })
       break
     case "run":
     case "r":
-      console.log("TODO :: run")
-      //lib.run({ action, rootPath, args })
+      lib.run({ rootPath, args })
       break
     case "manual":
     case "man":

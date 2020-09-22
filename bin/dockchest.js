@@ -9,7 +9,9 @@ const [action="manual", target="", ...args] = argv._
 const cwd = process.cwd()
 const rootPath = pathJoin(cwd, target)
 
-
+async function caseMake ({ rootPath, simpleGuide = true }){
+  return await lib.makeAll({ rootPath, simpleGuide })
+}
 
 doit(async function(){
   switch(action){
@@ -111,7 +113,3 @@ doit(async function(){
       break
   }
 })
-
-async function caseMake ({ rootPath, simpleGuide = true }){
-  return await lib.makeAll({ rootPath, simpleGuide })
-}

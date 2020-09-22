@@ -1,0 +1,10 @@
+# Docker configuration backend
+providers:
+  docker:
+    exposedByDefault: false
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.localhost`)"
+api:
+  dashboard: true
+  insecure: true
+metrics:
+  prometheus: {}

@@ -1,0 +1,16 @@
+defines:
+  - &NAME doch-traefik
+  - &VERSION 0.0.1
+arg:
+  SERVER_PORT: *C_SERVER_PORT
+build:
+  tag: [*NAME, *VERSION]
+  script: |
+    FROM traefik:v2.2
+    VOLUME [ "$PWD/traefik.yml", "/etc/traefik/traefik.yml" ]
+    VOLUME [ "/var/run/docker.sock", "/var/run/docker.sock" ]
+run:
+  name: "doch-traefik"
+  publishes: 
+    - [80, 80]
+    - [8080, 8080]

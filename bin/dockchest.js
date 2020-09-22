@@ -13,6 +13,15 @@ const rootPath = pathJoin(cwd, target)
 
 doit(async function(){
   switch(action){
+    case "template":
+    case "temp":
+    case "t":
+      lib.template({ rootPath, args })
+      break
+    case "init":
+    case "i":
+      lib.init({ rootPath, args })
+      break
     case "preview":
     case "pre":
     case "p":

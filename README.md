@@ -1,10 +1,43 @@
-# Dockchest (alpha.5)
+# Dockchest (alpha.12)
 Docker prototyping tool
 
 
 ## Usage
 
+### template
+```bash
+doch init
 
+# input (Template types will continue to increase)
+? Template list » - Use arrow-keys. Return to submit.
+>   mysql
+    traefik
+
+# input
+? Mysql template type » - Use arrow-keys. Return to submit.
+>   default
+    traefik
+
+
+√ root user password ... *****
+√ Port number ... 4000
+√ Enter additional users (with ,) ... foo, bar
+{
+  type: 'default',
+  host: '*',
+  port: '4000',
+  rootPassword: '*****',
+  users: [ 'foo', 'bar' ],
+  useTraefik: false
+}
+√ Is the form entered correctly? ... N / Y
+? Are you sure the templates will be installed from C:\Users\label\git\dockchest? » N / Y
+
+# created file docker-entrypoint-initdb.d/user.sh
+# created file DockerDesign.yml
+```
+
+### Dockchest file
 Write dockchest.yml or DockerDesign.yml in the project in progress. Like this
 ```yml
 defines:
@@ -41,38 +74,13 @@ Create a Dockerfile through the `make` command.
 ```bash
 $ cd test/localvolume
 $ doch make  # Dockerfile is automatically generated.
-
-
-- [Directory]
-
-  cd C:\Users\label\git\dockchest\test\localvolume\live-server
-
-- [Build]
-
-  docker build --tag doch-localvolume:0.2.0 --file Dockerfile --build-arg SERVER_PORT=8000 .
-
-- [Run with attach]
-
-  docker run -i -t --name="express-server" --publish="8000:8000" --volume="C:\Users\label\git\dockchest\test\localvolume\volume:/usr/src/app/volume" doch-localvolume:0.2.0
-
-- [Run with deamon]
-
-  docker run -i -t -d --name="express-server" --publish="8000:8000" --volume="C:\Users\label\git\dockchest\test\localvolume\volume:/usr/src/app/volume" doch-localvolume:0.2.0
+$ doch build # image generated.
+$ doch run # container run
 ```
-
-
-Enter the commands sequentially through the manual after the make command.
-```
-cd ~/git/dockchest/test/localvolume/live-server
-docker build --tag doch-localvolume:0.2.0 --file Dockerfile --build-arg SERVER_PORT=8000 .
-docker run -i -t --name express-server --publish="8000:8000" --volume="~/git/dockchest/test/localvolume/volume:/usr/src/app/volume" doch-localvolume:0.2.0
-```
-
 
 This guide is not final... being studied to make it simpler and clearer.
 
-
-## shortcut
+### shortcut
 make, build, run with deamon
 ```
 doch -mbd
@@ -82,16 +90,17 @@ doch -mbd
 It automatically creates a'Dockerfile', builds the image, and run the disposable container.
 ```
 doch make test/localvolume
-doch build
-doch run # support graceful exit
+doch build test/localvolume
+doch run test/localvolume --no-deamon# support graceful exit
 ```
-
 
 ## RFCs
 ```
-doch pre
+doch template
+doch init
+# doch pre
 doch make
 doch build
-doch manual
 doch run
+doch manual
 ```

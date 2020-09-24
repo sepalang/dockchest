@@ -10,7 +10,7 @@ const cwd = process.cwd()
 const executePath = pathJoin(cwd, target)
 
 async function caseMake ({ executePath, simpleGuide = true }){
-  return await lib.makeAll({ executePath, simpleGuide })
+  return await lib.runMakeAll({ executePath, simpleGuide })
 }
 
 try {
@@ -25,11 +25,9 @@ try {
       case "i":
         lib.init({ executePath, args })
         break
-      case "preview":
-      case "pre":
-      case "p":
-        const configList = await lib.configAll({ action, executePath, args })
-        console.log(nodeLog(configList))
+      case "asap":
+      case "a":
+        await lib.runAsap({ executePath, args })
         break
       case "make":
       case "m":
@@ -41,6 +39,7 @@ try {
         break
       case "run":
       case "r":
+        console.log("If you need exit")
         lib.run({ executePath, args })
         break
       case "manual":
@@ -50,7 +49,7 @@ try {
           return
         }
         const preconfig = await lib.readDockchestFile(select)
-        const commandInfo = lib.createCommandInfo(preconfig)
+        const commandInfo = await lib.buildCommandInfoWithPrompt(preconfig)
         const { commands } = commandInfo
         let runed = []
   
@@ -118,3 +117,4 @@ try {
   console.log(error)
   process.exit(1)
 }
+

@@ -8,5 +8,11 @@ test/**/Dockerfile
 test/**/.dockerignore
 test/**/DockerHelp.md
 
+test/mysql/**
+!test/mysql/README.md
+test/traefik/**
+!test/traefik/README.md
+
+
 ## legacy
 test/**/README_DOCKER.md

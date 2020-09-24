@@ -40,7 +40,7 @@ try {
       case "run":
       case "r":
         console.log("If you need exit")
-        lib.run({ executePath, args })
+        lib.runDeamon({ executePath, args })
         break
       case "manual":
       case "man":

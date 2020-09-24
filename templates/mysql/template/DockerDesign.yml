@@ -4,8 +4,6 @@ defines:
   - &HOST <%= host %> <% } %>
   - &C_SERVER_PORT 3306
   - &H_SERVER_PORT <%= port %>
-arg:
-  SERVER_PORT: *C_SERVER_PORT
 build:
   tag: [*CONTAINER, *VERSION]
   script: |
@@ -14,11 +12,11 @@ build:
     EXPOSE 3306
     COPY ./docker-entrypoint-initdb.d /docker-entrypoint-initdb.d
 run:
-  name: "doch-mysql"
+  name: "doch-mysql" <% if(!useTraefik){ %>
   publishes: 
-    - [*H_SERVER_PORT, *C_SERVER_PORT]<% if(useTraefik){ %>
+    - [*H_SERVER_PORT, *C_SERVER_PORT]<% } %><% if(useTraefik){ %>
   labels:
-    - "traefik.enable=true"
+    - ["traefik.enable=true"]
     - ["traefik.tcp.routers.db.rule=HostSNI(`", *HOST ,"`)"]
     - ["traefik.tcp.services.db.loadbalancer.server.port=", *H_SERVER_PORT]
     - ["traefik.tcp.routers.db.entrypoints=mysql"] <% } %>

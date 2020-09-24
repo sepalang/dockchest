@@ -54,7 +54,7 @@ module.exports = {
     .then(function(value){
       data.port = value
     })
-
+    
     await prompt({
       message:"Enter additional users (with ,)",
       type: "list"

@@ -11,6 +11,5 @@ build:
     VOLUME [ "/var/run/docker.sock", "/var/run/docker.sock" ]
 run:
   name: "doch-traefik"
-  publishes: 
-    - [80, 80]
-    - [8080, 8080]
+  publishes: <% for(publish of publishes){ %>
+    - [<%= `${publish[0]}, ${publish[1]}` %>]<% } %>

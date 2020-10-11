@@ -10,6 +10,7 @@ const cwd = process.cwd()
 const executePath = pathJoin(cwd, target)
 
 async function caseMake ({ executePath, simpleGuide = true }){
+  console.log("lib", lib)
   return await lib.runMakeAll({ executePath, simpleGuide })
 }
 

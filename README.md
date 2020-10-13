@@ -3,38 +3,8 @@ Docker prototyping tool
 
 ## Usage
 
-### template
-```bash
-doch init
-
-# input (Template types will continue to increase)
-? Template list » - Use arrow-keys. Return to submit.
->   mysql
-    traefik
-
-# input
-? Mysql template type » - Use arrow-keys. Return to submit.
->   default
-    traefik
-
-
-√ root user password ... *****
-√ Port number ... 4000
-√ Enter additional users (with ,) ... foo, bar
-{
-  type: 'default',
-  host: '*',
-  port: '4000',
-  rootPassword: '*****',
-  users: [ 'foo', 'bar' ],
-  useTraefik: false
-}
-√ Is the form entered correctly? ... N / Y
-? Are you sure the templates will be installed from C:\Users\label\git\dockchest? » N / Y
-
-# created file docker-entrypoint-initdb.d/user.sh
-# created file DockerDesign.yml
-```
+### Template
+![dockchest-init-alpha15](https://user-images.githubusercontent.com/1593115/95810153-479b4b00-0d4b-11eb-9475-d19437677014.gif)
 
 ### Dockchest file
 Write dockchest.yml or DockerDesign.yml in the project in progress. Like this

@@ -1,6 +1,5 @@
-# Dockchest (alpha.12)
+# Dockchest (alpha.15)
 Docker prototyping tool
-
 
 ## Usage
 
@@ -62,6 +61,7 @@ build:
     CMD npx live-server --port=$SERVER_PORT --host=0.0.0.0
 run:
   name: "live-server"
+  link: "mydb"
   publishes: 
     - [*H_SERVER_PORT, *C_SERVER_PORT]
   volumes: 
@@ -83,22 +83,21 @@ This guide is not final... being studied to make it simpler and clearer.
 ### shortcut
 make, build, run with deamon
 ```
-doch -mbd
+doch asap #or doch a
 ```
 
 ## Design goal
 It automatically creates a'Dockerfile', builds the image, and run the disposable container.
 ```
-doch make test/localvolume
-doch build test/localvolume
-doch run test/localvolume --no-deamon# support graceful exit
+doch init
+doch asap
 ```
 
 ## RFCs
 ```
 doch template
 doch init
-# doch pre
+doch asap
 doch make
 doch build
 doch run

@@ -107,7 +107,7 @@ try {
             await run(cli)
           })
         }
-        console.log(lib.createSimpleGuideByCommandInfo(commandInfo))
+        console.log(lib.createSimpleStandardOutGuide(commandInfo))
         break
       default:
         console.log(await readFilePromise(pathJoin(__dirname, 'man.txt')))

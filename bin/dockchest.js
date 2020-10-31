@@ -40,7 +40,7 @@ try {
         break
       case "run":
       case "r":
-        console.log("If you need exit")
+        console.log("If you need exit press ctrl + p + q")
         lib.runDeamon({ executePath, args })
         break
       case "rm":
@@ -50,10 +50,12 @@ try {
         await lib.runRmi()
         break
       case "ps":
-        console.log("\n"+(await lib.selectContainers()).join(" "))
+        const containerIds = await lib.selectContainers()
+        containerIds.length && console.log("\n"+containerIds.join(" "))
         break
       case "images":
-        console.log("\n"+(await lib.selectImages()).join(" "))
+        const imageIds = await lib.selectImages()
+        imageIds.length && console.log("\n"+imageIds.join(" "))
         break
       case "manual":
       case "man":

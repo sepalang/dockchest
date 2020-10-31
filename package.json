@@ -1,6 +1,6 @@
 {
   "name": "@sepalang/dockchest",
-  "version": "0.0.0-alpha.17",
+  "version": "0.0.0-alpha.18",
   "description": "",
   "main": "index.js",
   "preferGlobal": true,
@@ -22,7 +22,7 @@
   "author": "AHN HO JUNG",
   "license": "MIT",
   "dependencies": {
-    "@sepalang/runner": "^0.12.6",
+    "@sepalang/runner": "^0.13.1",
     "clone-deep": "^4.0.1",
     "consolidate": "^0.16.0",
     "ejs": "^3.1.5",

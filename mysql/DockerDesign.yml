@@ -1,0 +1,16 @@
+defines:
+  - &CONTAINER doch-mysql
+  - &VERSION 0.1.0 
+  - &C_SERVER_PORT 3306
+  - &H_SERVER_PORT 60000
+build:
+  tag: [*CONTAINER, *VERSION]
+  script: |
+    FROM mysql:latest
+    ENV MYSQL_ROOT_PASSWORD "happy"
+    EXPOSE 3306
+    COPY ./docker-entrypoint-initdb.d /docker-entrypoint-initdb.d
+run:
+  name: "doch-mysql" 
+  publishes: 
+    - [*H_SERVER_PORT, *C_SERVER_PORT]

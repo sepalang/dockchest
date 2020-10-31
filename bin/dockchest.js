@@ -43,6 +43,18 @@ try {
         console.log("If you need exit")
         lib.runDeamon({ executePath, args })
         break
+      case "rm":
+        await lib.runRm()
+        break
+      case "rmi":
+        await lib.runRmi()
+        break
+      case "ps":
+        console.log("\n"+(await lib.selectContainers()).join(" "))
+        break
+      case "images":
+        console.log("\n"+(await lib.selectImages()).join(" "))
+        break
       case "manual":
       case "man":
         const [ select ] = await lib.findDockchestFile(executePath)

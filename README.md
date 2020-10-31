@@ -1,10 +1,22 @@
-# Dockchest (alpha.15)
+# Dockchest (alpha.17-unstable)
 Docker prototyping tool
 
 ## Usage
 
 ### Template
 ![dockchest-init-alpha15](https://user-images.githubusercontent.com/1593115/95810153-479b4b00-0d4b-11eb-9475-d19437677014.gif)
+
+### Interactive rm, rmi
+```
+doch rm
+doch rmi
+```
+
+### Interactive ps, images
+```
+doch ps
+doch images
+```
 
 ### Dockchest file
 Write dockchest.yml or DockerDesign.yml in the project in progress. Like this
@@ -31,6 +43,8 @@ build:
     CMD npx live-server --port=$SERVER_PORT --host=0.0.0.0
 run:
   name: "live-server"
+  netAlias: "live-server",
+  net: "mybridge",
   link: "mydb"
   publishes: 
     - [*H_SERVER_PORT, *C_SERVER_PORT]

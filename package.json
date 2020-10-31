@@ -1,6 +1,6 @@
 {
   "name": "@sepalang/dockchest",
-  "version": "0.0.0-alpha.18",
+  "version": "0.0.0-alpha.19",
   "description": "Docker prototyping tool",
   "main": "index.js",
   "preferGlobal": true,

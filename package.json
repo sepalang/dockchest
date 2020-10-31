@@ -1,7 +1,7 @@
 {
   "name": "@sepalang/dockchest",
   "version": "0.0.0-alpha.18",
-  "description": "",
+  "description": "Docker prototyping tool",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
@@ -30,5 +30,19 @@
     "mkdirp": "^1.0.4",
     "yaml": "^1.10.0",
     "yargs": "^15.4.1"
-  }
+  },
+  "directories": {
+    "bin": "bin",
+    "lib": "lib",
+    "templates": "templates"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sepalang/dockchest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sepalang/dockchest/issues"
+  },
+  "homepage": "https://github.com/sepalang/dockchest#readme"
 }

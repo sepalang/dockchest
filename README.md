@@ -1,5 +1,5 @@
-# Dockchest (alpha.17-unstable)
-Docker prototyping tool
+# Dockchest (alpha.18)
+Interactive docker cli utility (alpha)
 
 ## Usage
 

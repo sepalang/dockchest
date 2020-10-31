@@ -1,7 +1,7 @@
 {
   "name": "@sepalang/dockchest",
-  "version": "0.0.0-alpha.19",
-  "description": "Docker prototyping tool",
+  "version": "0.0.0-alpha.20",
+  "description": "Interactive docker cli utility (alpha)",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {

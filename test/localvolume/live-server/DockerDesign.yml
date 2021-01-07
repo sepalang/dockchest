@@ -20,6 +20,9 @@ build:
     CMD npx live-server --port=$SERVER_PORT --host=0.0.0.0
 run:
   name: "live-server"
+  privileged: true
+  devices:
+    - [/dev/tty.usbmodem21101, /dev/ttyUSB0]
   publishes: 
     - [*H_SERVER_PORT, *C_SERVER_PORT]
   volumes: 
